@@ -20,9 +20,9 @@ export default function () {
       <aside>
         <ul>
           {posts.map((post) => {
-            const { title } = post.attributes;
+            const { title, slug } = post.attributes;
             return <li key={post.id}>
-              <Link to={`/posts/${post.id}`}>{title}</Link>
+              <Link to={`/posts/${slug}`}>{title}</Link>
             </li>;
           })}
         </ul>

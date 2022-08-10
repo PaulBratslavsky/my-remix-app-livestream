@@ -4,7 +4,7 @@ import { useLoaderData } from "@remix-run/react";
 export async function loader({ params }) {
   const slug = params.slug;
   const res = await fetch(
-    "http://localhost:1338/api/posts/" + slug + "?populate=*"
+    "http://localhost:1338/api/post/find-by-slug/" + slug + "?populate=*"
   );
   const { data } = await res.json();
   return { post: data };
