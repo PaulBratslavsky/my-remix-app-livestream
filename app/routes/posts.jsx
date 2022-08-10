@@ -1,50 +1,32 @@
-import { json } from "@remix-run/node";
 import { Outlet, useLoaderData, Link } from "@remix-run/react";
 
 import React from "react";
 
 export const loader = async () => {
-  return json({
-    posts: [
-      {
-        id: 1,
-        slug: "my-first-post-1",
-        title: "My First Post",
-      },
-      {
-        id: 2,
-        slug: "my-second-post-2",
-        title: "A Mixtape I Made Just For You",
-      },
-      {
-        id: 3,
-        slug: "my-third-post-3",
-        title: "My Third Post",
-      },
-    ],
-  });
+  const res = await fetch("http://localhost:1338/api/posts");
+  const { data } = await res.json();
+  return { posts: data };
 };
 
 export default function () {
   const { posts } = useLoaderData();
 
-  console.log(posts, "from hook");
-
   return (
     <div>
       <h1>Posts Page</h1>
       <Link to="/">Back Home</Link>
-  
-        <h2>Posts</h2>
-        <aside>
-          <ul>
-            {posts.map((post) => (
-              <li key={post.id}>
-                <Link to={`/posts/${post.slug}`}>{post.title}</Link>
-              </li>
-            ))}
-          </ul>
-        </aside>
+
+      <h2>Posts</h2>
+      <aside>
+        <ul>
+          {posts.map((post) => {
+            const { title } = post.attributes;
+            return <li key={post.id}>
+              <Link to={`/posts/${post.id}`}>{title}</Link>
+            </li>;
+          })}
+        </ul>
+      </aside>
       <section>
         <Outlet />
       </section>
