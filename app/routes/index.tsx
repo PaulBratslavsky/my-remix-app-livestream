@@ -1,18 +1,12 @@
-import { Link } from "@remix-run/react";
-
+import MyLink from "../components/MyLink";
 export default function Index() {
   return (
-    <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
+    <div className="container mx-auto">
       <h1>Welcome to Home Remix We are here</h1>
 
-      <div className="mx-auto mt-16 max-w-7xl text-center">
-        <Link
-          to="/posts"
-          className="text-xl text-blue-600 underline"
-        >
-          Blog Posts
-        </Link>
-      </div>
+      <MyLink to="/posts">
+        Blog Posts
+      </MyLink>
 
     </div>
   );
