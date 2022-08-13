@@ -1,5 +1,5 @@
 import { Link } from "@remix-run/react";
-
+import GetURLImage from "../components/GetURLImage";
 export default function Index() {
   return (
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
@@ -13,6 +13,8 @@ export default function Index() {
           Blog Posts
         </Link>
       </div>
+
+      <GetURLImage />
 
     </div>
   );
