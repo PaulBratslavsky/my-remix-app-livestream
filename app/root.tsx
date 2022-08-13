@@ -27,7 +27,7 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className="container mx-auto my-6">
         <Outlet />
         <ScrollRestoration />
         <Scripts />

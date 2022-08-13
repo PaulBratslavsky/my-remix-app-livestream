@@ -1,6 +1,6 @@
 import { Outlet, useLoaderData, Link } from "@remix-run/react";
 import MyLink from "../components/MyLink";
-import Card from "../components/Card";
+import SmallCard from "../components/SmallCard";
 
 export const loader = async () => {
   const res = await fetch("http://localhost:1338/api/posts?populate=*");
@@ -12,8 +12,8 @@ export default function () {
   const { posts } = useLoaderData();
 
   return (
-    <div className="container mx-auto">
-      <div className="grid grid-cols-3 gap-4">
+    <div>
+      <div className="grid grid-cols-4 gap-4">
         <aside className="col-span-1">
           <ul>
             {posts.map((post) => {
@@ -22,7 +22,7 @@ export default function () {
               return (
                 <li key={post.id}>
                   <Link to={`/posts/${post.id}`}>
-                    <Card
+                    <SmallCard
                       title={title}
                       description={description}
                       tag={tag}
@@ -34,7 +34,7 @@ export default function () {
             })}
           </ul>
         </aside>
-        <section className="col-span-2">
+        <section className="col-span-3">
           <Outlet />
           <MyLink to="/">Back Home</MyLink>
         </section>
